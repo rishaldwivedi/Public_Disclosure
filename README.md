@@ -30,6 +30,6 @@ Sharing POC's of latest discovery
 - Empty out “C:\ProgramData\MSI\Dragon Center”
 - Create a symlink of the arbitrary file (C:\Windows\System32\protected.dll) to the RPC object (\\RPC Control\\battery.txt).
 - Next, Mounting the RPC directory "\\RPC Control" to “C:\ProgramData\MSI\Dragon Center”
-- Now next time the Dragon Center is ran by the administrator & if he attempts to change Battery settings, a Boolean value will be written to the battery.txt, which now points to the proteted.dll (symlink), thereby corrupting the dll.
+- Now next time the Dragon Center is ran by the administrator & if he attempts to change Battery settings, a Boolean value will be written to the battery.txt, which now points to the protected.dll (symlink), thereby corrupting the dll.
 
 ---
