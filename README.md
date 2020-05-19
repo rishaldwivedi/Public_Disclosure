@@ -7,11 +7,13 @@ Sharing POC's of latest discovery
 
 **Vulnerability** – Local Privilege escalation due to weak ACL
 
-**Vulnerabile Version** – 2.6.2003.2401 
+**Vulnerable Version** – Dragon Center 2 - 2.5.1905.3001  & Prior
+
+**Fixed Version** – Dragon Center 2 - 2.6.x & Later 
 
 **Vulnerable Binaries** – Dragon Center.exe (C:\Program Files (x86)\MSI\MSI Remind Manager)
 
-**Vulnerability Description** – There are insecure file permissions on "C:\ProgramData\MSI\Dragon Center" folder in Dragon Center Software, shipped with MSI Gaming laptops, allowing local authenticated users to overwrite system files and gain escalated privileges & also bypass controls to change software settings, allowing execution of malware planted in the same directory. This issue affects 2.6.2003.2401 version of Dragon Center. This affects the integrity of the system.
+**Vulnerability Description** – There are insecure file permissions on "C:\ProgramData\MSI\Dragon Center" folder in Dragon Center Software, shipped with MSI Gaming laptops, allowing local authenticated users to overwrite system files and gain escalated privileges & also bypass controls to change software settings, allowing execution of malware planted in the same directory. This issue affects 2.5.1905.3001 & Prior versions of Dragon Center. This affects the integrity of the system.
 
 ---
 **Normal Attack Scenario to Bypass control** - An attacker can carry out a very simple attack, bypassing the controls to change certain settings of Dragon Center, which he doesn't has access to. 
