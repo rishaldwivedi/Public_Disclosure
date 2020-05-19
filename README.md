@@ -2,7 +2,7 @@
 Sharing POC's of latest discovery
 
 
-# MSI Dragon Center EOP 
+# MSI Dragon Center EOP (CVE-2020-13149)
 
 
 **Vulnerability** – Local Privilege escalation due to weak ACL
