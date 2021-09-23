@@ -2,6 +2,52 @@
 Sharing POC's of latest discovery
 
 
+
+# Unauthenticated RCE in https://learnnow.telekom.de/
+
+
+**Vulnerability** – Insecure Deserialzation Vulnerability
+
+**Vulnerability Description** – 
+Telerik UI for ASP.NET (Version - 2016.3.1018) was being used by the application. It suffers from a known vulnerability CVE-2019-18935 (Insecure Deserialization). Using basic fingerprinting (Client-side source) it was revealed that the application uses a vulnerable Telerik version. 
+
+
+**Available exploit/Steps to Reproduce** – 
+
+`Exploit 1:`  https://github.com/noperator/CVE-2019-18935/tree/master/RAU_crypto
+- Running the above exploit will allow us to upload any supplied file to any writable directory on the vulnerable system. I choose writing to the "C:\Windows\Temp" directory with a harmless Text file, which was successfully uploaded to the target system. Below shared is the command ran. 
+
+Command - python RAU_crypto.py -P "c:\\\Windows\\\Temp" 2016.3.1018 test.txt https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau
+Screenshot - [Attached - 1.png]
+
+`Exploit 2:`  https://github.com/noperator/CVE-2019-18935/blob/master/CVE-2019-18935.py 
+- Since the earlier exploit was completely blind, this time ran another exploit, which would actually do an insecure deserialization of a Mixed Model Dll file & cause a sleep of 10 seconds [system(sleep)] to the application (Time-based approach). Again making sure no harm is done to the system. 
+
+Command - python CVE-2019-18935.py -u https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau -v 2016.3.1018 -f C:\\\Windows\\\Temp -p sleep_2020092314140184_amd64.dll
+
+Screenshot - 
+   [Attached - 2.png]  
+   [Attached - 3.png]  
+
+Team reached out asking to get a reverse shell, so that they can conclusively estimate its security impact. 
+
+Unfortunately, the connection for some reason was getting blocked (https://github.com/noperator/CVE-2019-18935/blob/master/reverse-shell.c, possibly some endpoint protection. Digging further, I was able to get a FPD (Full path disclosure) in another domain of telekom -  https://salesacademy.telekom.de/SAMSuiTools/
+
+`D:\IIS_Root\SAMSuiTools\redacted:` 
+
+Assuming, both the domanis being hosted on the same domain, using `Exploit 1:` I again uploaded a harmless text file to the above disclosed directory & it worked! 
+I was able to confirm the same by visiting https://salesacademy.telekom.de/SAMSuiTools/test.txt . Since i had the permission to do a reverse shell, i uploaded a simple/custom written webshell to get a execute commands. [The webshell too was getting deleted after few seconds of upload, possibly an EPP solution?
+
+Screenhot - 
+[RCE - salesacademy.png] 
+[RCE- salesacademy_telekom_de.png]
+
+So I ended up getting access to both https://learnnow.telekom.de/ & https://salesacademy.telekom.de/. 
+
+
+---
+
+
 # MSI Dragon Center EOP (CVE-2020-13149)
 
 
