@@ -36,6 +36,27 @@ Sharing POC's of latest discovery
 
 ---
 
+# MSI Dragon Center - Hardcoded Keys & Credentials (Vendor never acknowledged)
+
+
+**Vulnerability** – Hardcoded API Keys & Credentials
+
+**Vulnerable Version** – Dragon Center 2 - 2.5.1905.3001  & Prior
+
+**Fixed Version** – Dragon Center 2 - 2.6.x & Later 
+
+**Vulnerable Binaries** – Dragon Center.exe (C:\Program Files (x86)\MSI\MSI Remind Manager)
+
+**Vulnerability Description** – The Binary after being decompiled, revels the complete source. Upon analysis, it was reveled that it contained a hardcoded Credentials & API Key for the domain https://register.msi.com/rest/. 
+
+**Available exploit/Steps to Reproduce** – 
+- Using a tool named dnSpy, load the .NET binary & attempt to decompile it.
+- Upon successful decompilation, navigate to MainWindow class routine & search for keyword “/rest”
+- You can find the API request with the API Keys to access & the credentials. 
+- Now an attacker can simply navigate to https://register.msi.com/rest/ & login.
+
+---
+
 # qdPM RCE (CVE-2020-7246)
 
 
@@ -47,7 +68,6 @@ Sharing POC's of latest discovery
 
 **Vulnerability Description** – An attacker (user with least privilege) can abuse the remove profile photo functionality to traverse through other directories & delete files on the server. In a attack scenario, it's possible to delete exsisting “.htaccess” file in the uploads & user directory, which would allow bypassing protection applied against running dangerous file types (php, html, exe). Leveraging this, it's possible to upload a php backdoor, gaining ability to execute commands on the server.
 
----
 **Available exploit** - 
 - Working exploit is available at - https://www.exploit-db.com/exploits/47954.
   `python qdPM-exploit.py -url http://IPADDRESS -u test1@localhost.com -p test1`
