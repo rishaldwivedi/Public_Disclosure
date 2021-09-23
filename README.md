@@ -18,7 +18,7 @@ Telerik UI for ASP.NET (Version - 2016.3.1018) was being used by the application
 - Running the above exploit will allow us to upload any supplied file to any writable directory on the vulnerable system. I choose writing to the "C:\Windows\Temp" directory with a harmless Text file, which was successfully uploaded to the target system. Below shared is the command ran. 
 
 Command - `python RAU_crypto.py -P "c:\\\Windows\\\Temp" 2016.3.1018 test.txt https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau`
-Screenshot - [Attached - 1.png]
+Screenshot - `[Attached - 1.png]`
 
 `Exploit 2:`  https://github.com/noperator/CVE-2019-18935/blob/master/CVE-2019-18935.py 
 - Since the earlier exploit was completely blind, this time ran another exploit, which would actually do an insecure deserialization of a Mixed Model Dll file & cause a sleep of 10 seconds [sleep(10000)] to the application (Time-based approach). Again making sure no harm is done to the system. 
@@ -26,8 +26,8 @@ Screenshot - [Attached - 1.png]
 Command - `python CVE-2019-18935.py -u https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau -v 2016.3.1018 -f C:\\\Windows\\\Temp -p sleep_2020092314140184_amd64.dll`
 
 Screenshot - 
-   [Attached - 2.png]  
-   [Attached - 3.png]  
+  ` [Attached - 2.png]`  
+   `[Attached - 3.png]`
 
 Team reached out asking to get a reverse shell, so that they can conclusively estimate its security impact. 
 
@@ -47,8 +47,8 @@ I was able to confirm the same by visiting https://salesacademy.telekom.de/SAMSu
 
 
 Screenhot - 
-[RCE - salesacademy.png] 
-[RCE- salesacademy_telekom_de.png]
+`[RCE - salesacademy.png]`
+`[RCE- salesacademy_telekom_de.png]`
 
 So I ended up getting access to both https://learnnow.telekom.de/ & https://salesacademy.telekom.de/. 
 
