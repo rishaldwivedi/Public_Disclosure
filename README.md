@@ -36,14 +36,15 @@ Sharing POC's of latest discovery
 
 ---
 
-# MSI Dragon Center - Hardcoded Keys & Credentials (Vendor never acknowledged)
+
+# MSI Dragon Center - Hardcoded Keys & Credentials
 
 
 **Vulnerability** – Hardcoded API Keys & Credentials
 
 **Vulnerable Version** – Dragon Center 2 - 2.5.1905.3001  & Prior
 
-**Fixed Version** – Dragon Center 2 - 2.6.x & Later 
+**Fixed Version** – Dragon Center 2 - 2.6.x & Later (Vendor never acknowledged)
 
 **Vulnerable Binaries** – Dragon Center.exe (C:\Program Files (x86)\MSI\MSI Remind Manager)
 
@@ -56,6 +57,30 @@ Sharing POC's of latest discovery
 - Now an attacker can simply navigate to https://register.msi.com/rest/ & login.
 
 ---
+
+
+# MSI Dragon Center - Local Denial of serice
+
+
+**Vulnerability** – Crashing Dragon Center (Local Denial of service)
+
+**Vulnerable Version** – Dragon Center 2 - 2.5.1905.3001  & Prior
+
+**Fixed Version** – Dragon Center 2 - 2.6.x & Later (Vendor never acknowledged)
+
+**Vulnerable Binaries** – Dragon Center.exe (C:\Program Files (x86)\MSI\MSI Remind Manager)
+
+**Vulnerability Description** – When supplied with a crafted, malformed image file, the Dragon
+Center fails to handle the image & crashes the application.
+
+**Available exploit/Steps to Reproduce** – 
+- Open Dragon Center & navigate to “System Tuner”, then to “Profile 01”.
+- Now attempt to upload the below linked image file to the profile photo & click on apply, the app would crash.
+
+POC - https://drive.google.com/file/d/1h_OytMZmZmUbd3VYoYY31pNp3hUB3Prm/view
+
+---
+
 
 # qdPM RCE (CVE-2020-7246)
 
@@ -74,6 +99,7 @@ Sharing POC's of latest discovery
 - Also this CVE has been fetured in AttackDefence Lab - https://www.attackdefense.com/challengedetailsnoauth?cid=1690
 
 ---
+
 
 # Zoneminder (CVE-2019-6991)
 
