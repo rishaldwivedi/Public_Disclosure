@@ -35,3 +35,46 @@ Sharing POC's of latest discovery
 - Now next time the Dragon Center is ran by the administrator & if he attempts to change Battery settings, a Boolean value will be written to the battery.txt, which now points to the protected.dll (symlink), thereby corrupting the dll.
 
 ---
+
+# qdPM RCE (CVE-2020-7246)
+
+
+**Vulnerability** – Path Traversal & Improper Access Control leading to RCE
+
+**Vulnerable Version** – qdPM - 9.1 & prior
+
+**Fixed Version** – 
+
+**Vulnerability Description** – An attacker (user with least privilege) can abuse the remove profile photo functionality to traverse through other directories & delete files on the server. In a attack scenario, it's possible to delete exsisting “.htaccess” file in the uploads & user directory, which would allow bypassing protection applied against running dangerous file types (php, html, exe). Leveraging this, it's possible to upload a php backdoor, gaining ability to execute commands on the server.
+
+---
+**Available exploit** - 
+- Working exploit is available at - https://www.exploit-db.com/exploits/47954.
+  `python qdPM-exploit.py -url http://IPADDRESS -u test1@localhost.com -p test1`
+- Also this CVE has been fetured in AttackDefence Lab - https://www.attackdefense.com/challengedetailsnoauth?cid=1690
+
+---
+
+# Zoneminder (CVE-2019-6991)
+
+
+**Vulnerability** – Classic Stack overflow vulnerability 
+
+**Vulnerable Version** – 1.33.1 & Prior
+
+**Fixed Version** – 
+
+**Affected Binary** – zmu
+
+**Vulnerability Description** – The vulnerability exists in function zmLoadUser(), in zm_user.cpp, while authenticating the user. The vulnerability exists in the login functionality. Once a username & password is supplied to the zmu binary, the username & password is passed through mysql_real_escape_string() function in order to produce an escaped SQL string. Due to absense of any protection and limitation placed to the length of username & password, there exists a stack based buffer overflow. 
+
+Find more info at - 
+- https://github.com/ZoneMinder/zoneminder/issues/2478
+- https://github.com/ZoneMinder/zoneminder/pull/2482
+
+---
+**Available exploit** - 
+- Working exploitation steps can be found at - https://www.sechustle.com/2020/01/discovering-exploiting-stack-overflow.html
+
+
+
