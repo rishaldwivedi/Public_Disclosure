@@ -17,7 +17,7 @@ Telerik UI for ASP.NET (Version - 2016.3.1018) was being used by the application
 `Exploit 1:`  https://github.com/noperator/CVE-2019-18935/tree/master/RAU_crypto
 - Running the above exploit will allow us to upload any supplied file to any writable directory on the vulnerable system. I choose writing to the "C:\Windows\Temp" directory with a harmless Text file, which was successfully uploaded to the target system. Below shared is the command ran. 
 
-Command - python RAU_crypto.py -P "c:\\\Windows\\\Temp" 2016.3.1018 test.txt https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau
+Command - `python RAU_crypto.py -P "c:\\\Windows\\\Temp" 2016.3.1018 test.txt https://learnnow.telekom.de/SuiATTools//Telerik.Web.UI.WebResource.axd?type=rau`
 Screenshot - [Attached - 1.png]
 
 `Exploit 2:`  https://github.com/noperator/CVE-2019-18935/blob/master/CVE-2019-18935.py 
